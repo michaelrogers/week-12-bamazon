@@ -21,20 +21,28 @@ connection.query('Select * FROM products', (err, res) => {
     
 });
 
-const placeOrder = (orderObject) => {
-    // connection.query(`UPDATE products SET`)
-
+const placeOrder = (orderObject, itemQuery) => {
+    connection.query(`
+        UPDATE products 
+        SET stock_quantity = stock_quantity - ${orderObject.quantity}
+        WHERE item_id = ${orderObject.itemID}`,
+    (err, res) => {
+        if (err) console.log(err);
+        else console.log(
+            `You purchased ${orderObject.quantity} ${itemQuery.product_name}(s) for $${itemQuery.price * orderObject.quantity}!`); 
+    });
 };
 
 
 const validateOrder = (orderObject) => {
-    connection.query(
-        `SELECT * FROM products WHERE item_id = ${orderObject.itemID}`,
+    connection.query(`
+        SELECT * FROM products
+        WHERE item_id = ${orderObject.itemID}`,
     (err, res) => {
         if (err) console.log(err);
         else if (res.length > 0) {
             if (res[0].stock_quantity > orderObject.quantity) {
-                placeOrder(orderObject);
+                placeOrder(orderObject, res[0]);
             } else console.log('Insufficient Quantity');
         } else console.log('Invalid ID');
     });
@@ -58,7 +66,7 @@ const promptUserSelection = () => {
          {
             type: 'input',
             name: 'quantity',
-            message: "Enter the quanity you'd like to purchase.",
+            message: "Enter the quantity you'd like to purchase.",
             validate: (input) => {
                 if (!isNaN(input) && input.length > 0) {
                     return true;
