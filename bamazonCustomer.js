@@ -28,8 +28,14 @@ const placeOrder = (orderObject, itemQuery) => {
         WHERE item_id = ${orderObject.itemID}`,
     (err, res) => {
         if (err) console.log(err);
-        else console.log(
-            `You purchased ${orderObject.quantity} ${itemQuery.product_name}(s) for $${itemQuery.price * orderObject.quantity}!`); 
+        else {
+            console.log(
+                'Order Complete\n',
+                '--------------\n',
+                `You purchased ${orderObject.quantity} ${itemQuery.product_name}(s) for $${itemQuery.price * orderObject.quantity}!`
+            );
+            connection.end();
+        } 
     });
 };
 
