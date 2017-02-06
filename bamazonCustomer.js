@@ -18,7 +18,6 @@ connection.query('Select * FROM products', (err, res) => {
         console.table(res);
         promptUserSelection();
     }
-    
 });
 
 const placeOrder = (orderObject, itemQuery) => {
@@ -85,5 +84,5 @@ const promptUserSelection = () => {
     ])
     .then(
         (validatedInput) => validateOrder(validatedInput)
-    )
+    );
 };
