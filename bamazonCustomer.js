@@ -23,7 +23,7 @@ connection.query('Select * FROM products', (err, res) => {
 const placeOrder = (orderObject, itemQuery) => {
     connection.query(`
         UPDATE products 
-        SET stock_quantity = stock_quantity - ${orderObject.quantity}
+        SET stock_quantity = stock_quantity - ${Math.abs(orderObject.quantity)}
         WHERE item_id = ${orderObject.itemID}`,
     (err, res) => {
         if (err) console.log(err);
@@ -31,7 +31,7 @@ const placeOrder = (orderObject, itemQuery) => {
             console.log(
                 'Order Complete\n',
                 '--------------\n',
-                `You purchased ${orderObject.quantity} ${itemQuery.product_name}(s) for $${itemQuery.price * orderObject.quantity}!`
+                `You purchased ${Math.abs(orderObject.quantity)} ${itemQuery.product_name}(s) for $${itemQuery.price * Math.abs(orderObject.quantity)}!`
             );
             connection.end();
         } 
