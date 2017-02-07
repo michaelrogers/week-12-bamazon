@@ -1,4 +1,5 @@
 # week-12-bamazon
+#### Description
 UTCB Week 12 Bamazon (MySQL + Node.js)
 
 #### Table of Contents
