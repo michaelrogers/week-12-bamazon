@@ -1,7 +1,11 @@
 # week-12-bamazon
 UTCB Week 12 Bamazon (MySQL + Node.js)
 
-## Customer View (entry point bamazonCustomer.js)
+#### Table of Contents
+* [Customer View](#customer-view)
+* [Manager View](#manager-view)
+
+## <a name="customer-view">Customer View (entry point bamazonCustomer.js)</a>
 ### All products for sale are returned
 ![customer1](./screenshots/customer1.png)
 ### Completed Transaction
@@ -9,7 +13,7 @@ UTCB Week 12 Bamazon (MySQL + Node.js)
 ### Example of validation:
 ![customer3-validation](./screenshots/customer3-validation.png)
 
-## Manager View (entry point bamazonManager.js)
+## <a name="manager-view">Manager View (entry point bamazonManager.js)</a>
 ### Manager Menu Choices
 ![manager1](./screenshots/manager1.png)
 ### View Products for sale
