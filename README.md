@@ -1,6 +1,6 @@
 # week-12-bamazon
 #### Description
-UTCB Week 12 Bamazon (MySQL + Node.js)
+UTCB Week 12 Homework - Bamazon is an CLI application that uses MySQL and Node.js to simulate a merchant storefront with both a customer and manager view.
 
 #### Table of Contents
 * [Customer View](#customer-view)
